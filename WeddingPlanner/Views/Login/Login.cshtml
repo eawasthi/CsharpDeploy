@@ -1,0 +1,65 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+@ViewBag.EmailErrors
+@ViewBag.PasswordErrors
+
+<div>
+    @{
+        foreach(var error in @ViewBag.Errors)
+        {
+            //If there are any errors for a field...
+            if(@error.Errors.Count > 0)
+            {
+                // We show the first error for that field
+                <p>@error.Errors[0].ErrorMessage</p>
+            }
+        }
+    }
+</div>
+
+
+<div class="register">
+<h1>Register</h1>
+<form action="/register" method="post">
+<div class="form-group">
+<label for="Firstname">First Name: </label>
+<input type="text" class="form-control" id="Firstname" name="FirstName">
+</div>
+<div class="form-group">
+<label for="Lastname">Last Name: </label>
+<input type="text" class="form-control" id="Lastname" name="LastName">
+</div>
+<div class="form-group">
+<label for="Email">Email:</label>
+<input type="text" class="form-control" id="Email" name="Email">
+</div>
+<div class="form-group">
+<label for="Password">Password: </label>
+<input type="text" class="form-control" id="Password" name="Password">
+</div>
+<div class="form-group">
+<label for="ConfirmPass">Confirm Password: </label>
+<input type="text" class="form-control" id="ConfirmPass" name="ConfirmPass">
+</div>
+<input type="submit" value="Submit">
+</form>
+</div>
+
+
+
+<div class="login">
+<h1>Login</h1>
+<form action="/loginprocess" method="post">
+<div class="form-group">
+<label for="Email">Email: </label>
+<input type="text" class="form-control" id="Firstname" name="Email">
+</div>
+<div class="form-group">
+<label for="Password">Password: </label>
+<input type="text" class="form-control" id="Firstname" name="Password">
+</div>
+<input type="submit" value="Submit">
+</form>
+</div>
+

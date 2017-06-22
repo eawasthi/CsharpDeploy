@@ -1,0 +1,14 @@
+/*Write all of your CSS here*/
+.register{
+    display: inline-block;
+    margin: 25px;
+}
+.login{
+    display: inline-block;
+    vertical-align: top;
+    margin: 25px;
+}
+.CreateWedding{
+    display: inline-block;
+    vertical-align: top;
+}

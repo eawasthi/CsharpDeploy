@@ -1,0 +1,18 @@
+
+<h1>@ViewBag.OneWedding.WeddingOne and @ViewBag.OneWedding.WeddingTwo 's Wedding <a href="/AllWeddings">Dashboard</a> <a href="/logout">Log Out</a> </h1>
+<h3>@ViewBag.OneWedding.Date.ToString("MMMM, dd, yyyy")</h3>
+<h3>Guests: </h3>
+    <ul>
+        @if(@ViewBag.OneWedding.Guests.Count > 0)
+        {
+        foreach( var guest in @ViewBag.OneWedding.Guests)
+        {
+            <li>@guest.User.FirstName @guest.User.LastName</li>
+        }
+        }
+        else
+        {
+        <p>No one has RSVP</p>
+        }
+    </ul>
+ 

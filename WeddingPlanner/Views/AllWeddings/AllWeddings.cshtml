@@ -1,0 +1,55 @@
+<h1>Welcome to the Wedding Planner <a href="/logout">Log Out</a></h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Wedding</th>
+            <th>Date</th>
+            <th>Guest</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    
+    <tbody> 
+           @foreach(var wedding in @ViewBag.Weddings)
+                {
+                    <tr>
+                        <td><a href="/onewedding/@wedding.WeddingId">@wedding.WeddingOne & @wedding.WeddingTwo</a></td>
+                        <td>@wedding.Date.ToString("MMMM, dd, yyyy")</td>
+                        <td>@wedding.Guests.Count</td>
+                        <td>
+                            @{
+                                bool attending = false;
+
+                                if(@wedding.UserId == @ViewBag.UserID)
+                                    {
+                                    <a class="btn btn-warning btn-s" href="/delete/@wedding.WeddingId">DELETE</a>
+                                    }
+                                else 
+                            {
+                                    foreach(var guest in @wedding.Guests)
+                                    {
+                                        if(@guest.UserId == @ViewBag.UserId)
+                                        {
+                                            attending = true;
+                                        }
+                                    }
+                                    if(attending == true)
+                                        {
+                                            <a class="btn btn-primary btn-s" href="/UNRSVP/@wedding.WeddingId">Un-RSVP</a>   
+                                        }
+                                    else
+                                        {
+                                        <a class="btn btn-primary btn-s" href="/RSVP/@wedding.WeddingId">RSVP</a>   
+                                        }
+                                }
+                            }    
+                        </td>                        
+                    </tr>
+                }
+    </tbody>
+    
+</table>
+<form action="/createwedding" method="get">
+    <input type="submit" value="New Wedding">
+</form>
+@ViewBag.allguests
